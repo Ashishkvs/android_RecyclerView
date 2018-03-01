@@ -24,8 +24,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this)); //Compulsary req
 
-        //productListName
-        ArrayList<String> productList=new ArrayList(Arrays.asList("Apple","Dell","Acer","Lenovo","hp"));
+        //add Product obj as list item
+        ArrayList<Product> productList=new ArrayList<>();
+        productList.add(new Product("Apple",500,R.drawable.book));
+        productList.add(new Product("Mac",500,R.drawable.book));
+        productList.add(new Product("Dell",500,R.drawable.book));
+
         Log.i("list",productList.toString());
 
         //create CustomAdapter object with context and ArrayList

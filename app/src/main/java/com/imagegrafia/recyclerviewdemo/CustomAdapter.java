@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -21,10 +22,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductVie
     //to get List of product while creating object only create Constructor
 
     private Context context;
-    private List<String> productList;
+    private List<Product> productList;
 
 
-    public CustomAdapter(Context context, List<String> productList) {
+    public CustomAdapter(Context context, List<Product> productList) {
         this.context = context;
         this.productList = productList;
 
@@ -42,7 +43,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductVie
 
     @Override
     public void onBindViewHolder(ProductViewHolder holder, int position) {
-        holder.productName.setText(productList.get(position));
+        Product product = productList.get(position);
+        holder.productName.setText(product.getName());
+        holder.productPrice.setText(String.valueOf(product.getPrice()));
+        holder.productImage.setImageResource(Integer.parseInt(String.valueOf(product.getImage())));
 
 
     }
@@ -55,10 +59,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductVie
     //INTERNAL CLASS implemented first
     public class ProductViewHolder extends RecyclerView.ViewHolder {
         private TextView productName;
+        private TextView productPrice;
+        private ImageView productImage;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
             productName = itemView.findViewById(R.id.productName);
+            productPrice = itemView.findViewById(R.id.productPrice);
+            productImage = itemView.findViewById(R.id.productImage);
 
         }
     }
